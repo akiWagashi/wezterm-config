@@ -74,20 +74,25 @@ end
 ---@private
 ---@return table
 function BackDrops:_create_opts()
-   return {
-      {
+   local opts = {}
+   
+   if self.images and #self.images > 0 then
+      table.insert(opts, {
          source = { File = self.images[self.current_idx] },
          horizontal_align = 'Center',
-      },
-      {
-         source = { Color = colors.background },
-         height = '120%',
-         width = '120%',
-         vertical_offset = '-10%',
-         horizontal_offset = '-10%',
-         opacity = 0.96,
-      },
-   }
+      })
+   end
+   
+   table.insert(opts, {
+      source = { Color = colors.background },
+      height = '120%',
+      width = '120%',
+      vertical_offset = '-10%',
+      horizontal_offset = '-10%',
+      opacity = 0.96,
+   })
+   
+   return opts
 end
 
 ---Create the `background` options for focus mode

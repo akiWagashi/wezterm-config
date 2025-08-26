@@ -2,6 +2,19 @@ local gpu_adapters = require('utils.gpu-adapter')
 local backdrops = require('utils.backdrops')
 local colors = require('colors.custom')
 
+local wezterm = require 'wezterm'
+
+wezterm.on("gui-startup", function(cmd)
+	local screen = wezterm.gui.screens().main
+	local ratio = 0.7
+	local width, height = screen.width * ratio, screen.height * ratio
+	local tab, pane, window = wezterm.mux.spawn_window(cmd or {
+		position = { x = (screen.width - width) / 2, y = (screen.height - height) / 2 },
+	})
+	-- window:gui_window():maximize()
+	window:gui_window():set_inner_size(width, height)
+end)
+
 return {
    max_fps = 120,
    front_end = 'WebGpu',
@@ -43,6 +56,7 @@ return {
       bottom = 7.5,
    },
    adjust_window_size_when_changing_font_size = false,
+   window_decorations = "INTEGRATED_BUTTONS|RESIZE",
    window_close_confirmation = 'NeverPrompt',
    window_frame = {
       active_titlebar_bg = '#090909',
