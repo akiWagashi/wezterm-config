@@ -11,10 +11,14 @@ require('events.right-status').setup({ date_format = '%a %H:%M:%S' })
 require('events.tab-title').setup({ hide_active_tab_unseen = false, unseen_icon = 'circle' })
 require('events.new-tab-button').setup()
 
+local launch = require('config.launch')
+            -- :insert_menu({label = 'pwsh' , args = { 'pwsh.exe', '-NoLogo' }})
+            -- :set_default({ 'pwsh', '-NoLogo' })
+
 return Config:init()
    :append(require('config.appearance'))
    :append(require('config.bindings'))
    :append(require('config.domains'))
    :append(require('config.fonts'))
    :append(require('config.general'))
-   :append(require('config.launch')).options
+   :append(launch.options).options
