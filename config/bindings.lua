@@ -111,28 +111,28 @@ local keys = {
    -- background controls --
    {
       key = [[/]],
-      mods = mod.SUPER,
+      mods = mod.SUPER_REV,
       action = wezterm.action_callback(function(window, _pane)
          backdrops:random(window)
       end),
    },
    {
       key = [[,]],
-      mods = mod.SUPER,
+      mods = mod.SUPER_REV,
       action = wezterm.action_callback(function(window, _pane)
          backdrops:cycle_back(window)
       end),
    },
    {
       key = [[.]],
-      mods = mod.SUPER,
+      mods = mod.SUPER_REV,
       action = wezterm.action_callback(function(window, _pane)
          backdrops:cycle_forward(window)
       end),
    },
    {
       key = [[/]],
-      mods = mod.SUPER_REV,
+      mods = mod.SUPER,
       action = act.InputSelector({
          title = 'InputSelector: Select Background',
          choices = backdrops:choices(),
