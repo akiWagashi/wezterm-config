@@ -131,6 +131,13 @@ local keys = {
       end),
    },
    {
+      key = [[']],
+      mods = mod.SUPER_REV,
+      action = wezterm.action_callback(function(_window, _pane)
+         backdrops:set_images()
+      end),
+   },
+   {
       key = [[/]],
       mods = mod.SUPER,
       action = act.InputSelector({
